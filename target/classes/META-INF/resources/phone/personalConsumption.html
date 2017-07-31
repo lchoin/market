@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>太空商城</title>
+    <script src="/css/framework/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/framework/bootstrap-3.3.0-dist/css/bootstrap.min.css">
+    <script src="/css/framework/bootstrap-3.3.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/pindex.css">
+    <link rel="stylesheet" href="/css/pstyle.css">
+    <script src="/js/pdinate.js"></script>
+    <script>
+        showUserComsum()
+    </script>
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="cen1">
+        <div class="hear_de" onclick="returnload(3)">返回</div>
+        <div class="hear_log">消费记录</div>
+    </div>
+</header>
+<!--第二部分-->
+<div class="center1">
+    <div style="padding: 10px">
+        <!--查看积分-->
+        <table class="sel_tab showPoints">
+            <tr>
+                <td class="title">总金额（元）:</td>
+                <td class="uSumMoney"></td>
+            </tr>
+            <tr>
+                <td class="title" >可用金额（元）:</td>
+                <td class="uUsableMoney"></td>
+            </tr>
+        </table>
+        <!--积分记录-->
+        <div style="margin-top:20px;text-align: center;color: #1C689C;letter-spacing: 3px;font-weight: bold">
+            我的消费记录
+        </div>
+        <div class="newtable" style="margin-top:20px;">
+            <table class="member none" style="width: 100%;">
+                <tbody class="consum">
+                <tr >
+                    <td class="title">来源:</td>
+                    <td class="cSource"></td>
+                </tr>
+                <tr >
+                    <td class="title">消费金额:</td>
+                    <td class="cMoney"></td>
+                </tr>
+                <tr >
+                    <td class="title">消费时间:</td>
+                    <td class="cCreateDate"></td>
+                </tr>
+                <tr >
+                    <td class="title">备注:</td>
+                    <td class="cRemark"></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div style="height:80px"></div>
+</div>
+<a id="gotop" title="回到顶部" href="#top" style="z-index: 999"></a>
+</body>
+</html>

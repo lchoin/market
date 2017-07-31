@@ -1,0 +1,56 @@
+<script>
+    showUserComsum();
+</script>
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        个人消费
+    </ul><!-- .breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12 center">
+            <!-- PAGE CONTENT BEGINS -->
+            <!--查看积分-->
+            <table class="showPoints">
+                <tr>
+                    <td class="title">总金额（元）</td>
+                    <td class="uSumMoney"></td>
+                    <td class="title" >可用金额（元）</td>
+                    <td class="uUsableMoney"></td>
+                </tr>
+            </table>
+            <!--积分记录-->
+            <table class="newtable" style="margin-top:30px">
+                <thead>
+                <tr>
+                    <td class="title td2" colspan="4">我的消费记录</td>
+                </tr>
+                <tr >
+                    <td class="title">来源</td>
+                    <td class="title">消费金额</td>
+                    <td class="title">消费时间</td>
+                    <td class="title">备注</td>
+                </tr>
+                </thead>
+                <tbody class="consum">
+                <tr class="none" style="text-align: center">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div style="float: right" id="paging">
+                <ul class="pagination">
+
+                </ul>
+            </div>
+
+            <div style="width:100%;height:10px"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->

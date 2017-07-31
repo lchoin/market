@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbUserMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbUser">
+    <id column="u_id" jdbcType="BIGINT" property="uId" />
+    <result column="u_name" jdbcType="VARCHAR" property="uName" />
+    <result column="u_account" jdbcType="VARCHAR" property="uAccount" />
+    <result column="u_password" jdbcType="VARCHAR" property="uPassword" />
+    <result column="u_phone" jdbcType="CHAR" property="uPhone" />
+    <result column="u_authentication" jdbcType="CHAR" property="uAuthentication" />
+    <result column="u_type" jdbcType="CHAR" property="uType" />
+    <result column="u_sex" jdbcType="CHAR" property="uSex" />
+    <result column="u_head_portrait" jdbcType="VARCHAR" property="uHeadPortrait" />
+    <result column="u_province" jdbcType="VARCHAR" property="uProvince" />
+    <result column="u_city" jdbcType="VARCHAR" property="uCity" />
+    <result column="u_address" jdbcType="VARCHAR" property="uAddress" />
+    <result column="u_create_date" jdbcType="TIMESTAMP" property="uCreateDate" />
+    <result column="u_auth_date" jdbcType="TIMESTAMP" property="uAuthDate" />
+    <result column="u_reister_recommender" jdbcType="VARCHAR" property="uReisterRecommender" />
+    <result column="u_reister_recommender_account" jdbcType="VARCHAR" property="uReisterRecommenderAccount" />
+    <result column="u_sum_money" jdbcType="DECIMAL" property="uSumMoney" />
+    <result column="u_usable_money" jdbcType="DECIMAL" property="uUsableMoney" />
+    <result column="u_consumption_number" jdbcType="INTEGER" property="uConsumptionNumber" />
+    <result column="u_remark" jdbcType="VARCHAR" property="uRemark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    u_id, u_name, u_account, u_password, u_phone, u_authentication, u_type, u_sex, u_head_portrait, 
+    u_province, u_city, u_address, u_create_date, u_auth_date, u_reister_recommender, 
+    u_reister_recommender_account, u_sum_money, u_usable_money, u_consumption_number, 
+    u_remark
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where u_id = #{uId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_user
+    where u_id = #{uId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbUserExample">
+    delete from tb_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbUser">
+    insert into tb_user (u_id, u_name, u_account, 
+      u_password, u_phone, u_authentication, 
+      u_type, u_sex, u_head_portrait, 
+      u_province, u_city, u_address, 
+      u_create_date, u_auth_date, u_reister_recommender, 
+      u_reister_recommender_account, u_sum_money, 
+      u_usable_money, u_consumption_number, u_remark
+      )
+    values (#{uId,jdbcType=BIGINT}, #{uName,jdbcType=VARCHAR}, #{uAccount,jdbcType=VARCHAR}, 
+      #{uPassword,jdbcType=VARCHAR}, #{uPhone,jdbcType=CHAR}, #{uAuthentication,jdbcType=CHAR}, 
+      #{uType,jdbcType=CHAR}, #{uSex,jdbcType=CHAR}, #{uHeadPortrait,jdbcType=VARCHAR}, 
+      #{uProvince,jdbcType=VARCHAR}, #{uCity,jdbcType=VARCHAR}, #{uAddress,jdbcType=VARCHAR}, 
+      #{uCreateDate,jdbcType=TIMESTAMP}, #{uAuthDate,jdbcType=TIMESTAMP}, #{uReisterRecommender,jdbcType=VARCHAR}, 
+      #{uReisterRecommenderAccount,jdbcType=VARCHAR}, #{uSumMoney,jdbcType=DECIMAL}, 
+      #{uUsableMoney,jdbcType=DECIMAL}, #{uConsumptionNumber,jdbcType=INTEGER}, #{uRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbUser">
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="uName != null">
+        u_name,
+      </if>
+      <if test="uAccount != null">
+        u_account,
+      </if>
+      <if test="uPassword != null">
+        u_password,
+      </if>
+      <if test="uPhone != null">
+        u_phone,
+      </if>
+      <if test="uAuthentication != null">
+        u_authentication,
+      </if>
+      <if test="uType != null">
+        u_type,
+      </if>
+      <if test="uSex != null">
+        u_sex,
+      </if>
+      <if test="uHeadPortrait != null">
+        u_head_portrait,
+      </if>
+      <if test="uProvince != null">
+        u_province,
+      </if>
+      <if test="uCity != null">
+        u_city,
+      </if>
+      <if test="uAddress != null">
+        u_address,
+      </if>
+      <if test="uCreateDate != null">
+        u_create_date,
+      </if>
+      <if test="uAuthDate != null">
+        u_auth_date,
+      </if>
+      <if test="uReisterRecommender != null">
+        u_reister_recommender,
+      </if>
+      <if test="uReisterRecommenderAccount != null">
+        u_reister_recommender_account,
+      </if>
+      <if test="uSumMoney != null">
+        u_sum_money,
+      </if>
+      <if test="uUsableMoney != null">
+        u_usable_money,
+      </if>
+      <if test="uConsumptionNumber != null">
+        u_consumption_number,
+      </if>
+      <if test="uRemark != null">
+        u_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        #{uId,jdbcType=BIGINT},
+      </if>
+      <if test="uName != null">
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccount != null">
+        #{uAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null">
+        #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uPhone != null">
+        #{uPhone,jdbcType=CHAR},
+      </if>
+      <if test="uAuthentication != null">
+        #{uAuthentication,jdbcType=CHAR},
+      </if>
+      <if test="uType != null">
+        #{uType,jdbcType=CHAR},
+      </if>
+      <if test="uSex != null">
+        #{uSex,jdbcType=CHAR},
+      </if>
+      <if test="uHeadPortrait != null">
+        #{uHeadPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="uProvince != null">
+        #{uProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="uCity != null">
+        #{uCity,jdbcType=VARCHAR},
+      </if>
+      <if test="uAddress != null">
+        #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uCreateDate != null">
+        #{uCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uAuthDate != null">
+        #{uAuthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uReisterRecommender != null">
+        #{uReisterRecommender,jdbcType=VARCHAR},
+      </if>
+      <if test="uReisterRecommenderAccount != null">
+        #{uReisterRecommenderAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="uSumMoney != null">
+        #{uSumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="uUsableMoney != null">
+        #{uUsableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="uConsumptionNumber != null">
+        #{uConsumptionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="uRemark != null">
+        #{uRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbUserExample" resultType="java.lang.Long">
+    select count(*) from tb_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_user
+    <set>
+      <if test="record.uId != null">
+        u_id = #{record.uId,jdbcType=BIGINT},
+      </if>
+      <if test="record.uName != null">
+        u_name = #{record.uName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAccount != null">
+        u_account = #{record.uAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uPassword != null">
+        u_password = #{record.uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uPhone != null">
+        u_phone = #{record.uPhone,jdbcType=CHAR},
+      </if>
+      <if test="record.uAuthentication != null">
+        u_authentication = #{record.uAuthentication,jdbcType=CHAR},
+      </if>
+      <if test="record.uType != null">
+        u_type = #{record.uType,jdbcType=CHAR},
+      </if>
+      <if test="record.uSex != null">
+        u_sex = #{record.uSex,jdbcType=CHAR},
+      </if>
+      <if test="record.uHeadPortrait != null">
+        u_head_portrait = #{record.uHeadPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uProvince != null">
+        u_province = #{record.uProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uCity != null">
+        u_city = #{record.uCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAddress != null">
+        u_address = #{record.uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uCreateDate != null">
+        u_create_date = #{record.uCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uAuthDate != null">
+        u_auth_date = #{record.uAuthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uReisterRecommender != null">
+        u_reister_recommender = #{record.uReisterRecommender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uReisterRecommenderAccount != null">
+        u_reister_recommender_account = #{record.uReisterRecommenderAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uSumMoney != null">
+        u_sum_money = #{record.uSumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.uUsableMoney != null">
+        u_usable_money = #{record.uUsableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.uConsumptionNumber != null">
+        u_consumption_number = #{record.uConsumptionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.uRemark != null">
+        u_remark = #{record.uRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_user
+    set u_id = #{record.uId,jdbcType=BIGINT},
+      u_name = #{record.uName,jdbcType=VARCHAR},
+      u_account = #{record.uAccount,jdbcType=VARCHAR},
+      u_password = #{record.uPassword,jdbcType=VARCHAR},
+      u_phone = #{record.uPhone,jdbcType=CHAR},
+      u_authentication = #{record.uAuthentication,jdbcType=CHAR},
+      u_type = #{record.uType,jdbcType=CHAR},
+      u_sex = #{record.uSex,jdbcType=CHAR},
+      u_head_portrait = #{record.uHeadPortrait,jdbcType=VARCHAR},
+      u_province = #{record.uProvince,jdbcType=VARCHAR},
+      u_city = #{record.uCity,jdbcType=VARCHAR},
+      u_address = #{record.uAddress,jdbcType=VARCHAR},
+      u_create_date = #{record.uCreateDate,jdbcType=TIMESTAMP},
+      u_auth_date = #{record.uAuthDate,jdbcType=TIMESTAMP},
+      u_reister_recommender = #{record.uReisterRecommender,jdbcType=VARCHAR},
+      u_reister_recommender_account = #{record.uReisterRecommenderAccount,jdbcType=VARCHAR},
+      u_sum_money = #{record.uSumMoney,jdbcType=DECIMAL},
+      u_usable_money = #{record.uUsableMoney,jdbcType=DECIMAL},
+      u_consumption_number = #{record.uConsumptionNumber,jdbcType=INTEGER},
+      u_remark = #{record.uRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbUser">
+    update tb_user
+    <set>
+      <if test="uName != null">
+        u_name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccount != null">
+        u_account = #{uAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="uPassword != null">
+        u_password = #{uPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="uPhone != null">
+        u_phone = #{uPhone,jdbcType=CHAR},
+      </if>
+      <if test="uAuthentication != null">
+        u_authentication = #{uAuthentication,jdbcType=CHAR},
+      </if>
+      <if test="uType != null">
+        u_type = #{uType,jdbcType=CHAR},
+      </if>
+      <if test="uSex != null">
+        u_sex = #{uSex,jdbcType=CHAR},
+      </if>
+      <if test="uHeadPortrait != null">
+        u_head_portrait = #{uHeadPortrait,jdbcType=VARCHAR},
+      </if>
+      <if test="uProvince != null">
+        u_province = #{uProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="uCity != null">
+        u_city = #{uCity,jdbcType=VARCHAR},
+      </if>
+      <if test="uAddress != null">
+        u_address = #{uAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uCreateDate != null">
+        u_create_date = #{uCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uAuthDate != null">
+        u_auth_date = #{uAuthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uReisterRecommender != null">
+        u_reister_recommender = #{uReisterRecommender,jdbcType=VARCHAR},
+      </if>
+      <if test="uReisterRecommenderAccount != null">
+        u_reister_recommender_account = #{uReisterRecommenderAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="uSumMoney != null">
+        u_sum_money = #{uSumMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="uUsableMoney != null">
+        u_usable_money = #{uUsableMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="uConsumptionNumber != null">
+        u_consumption_number = #{uConsumptionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="uRemark != null">
+        u_remark = #{uRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbUser">
+    update tb_user
+    set u_name = #{uName,jdbcType=VARCHAR},
+      u_account = #{uAccount,jdbcType=VARCHAR},
+      u_password = #{uPassword,jdbcType=VARCHAR},
+      u_phone = #{uPhone,jdbcType=CHAR},
+      u_authentication = #{uAuthentication,jdbcType=CHAR},
+      u_type = #{uType,jdbcType=CHAR},
+      u_sex = #{uSex,jdbcType=CHAR},
+      u_head_portrait = #{uHeadPortrait,jdbcType=VARCHAR},
+      u_province = #{uProvince,jdbcType=VARCHAR},
+      u_city = #{uCity,jdbcType=VARCHAR},
+      u_address = #{uAddress,jdbcType=VARCHAR},
+      u_create_date = #{uCreateDate,jdbcType=TIMESTAMP},
+      u_auth_date = #{uAuthDate,jdbcType=TIMESTAMP},
+      u_reister_recommender = #{uReisterRecommender,jdbcType=VARCHAR},
+      u_reister_recommender_account = #{uReisterRecommenderAccount,jdbcType=VARCHAR},
+      u_sum_money = #{uSumMoney,jdbcType=DECIMAL},
+      u_usable_money = #{uUsableMoney,jdbcType=DECIMAL},
+      u_consumption_number = #{uConsumptionNumber,jdbcType=INTEGER},
+      u_remark = #{uRemark,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=BIGINT}
+  </update>
+</mapper>

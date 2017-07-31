@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>太空商城</title>
+    <link rel="stylesheet" href="/css/pstyle.css">
+    <link rel="stylesheet" href="/css/pindex.css">
+    <script src="/css/framework/jquery.min.js"></script>
+    <script src="/js/plog.js"></script>
+    <script src="/js/pdinate.js"></script>
+    <link rel="stylesheet" href="/js/need/layer.css">
+    <script src="/js/layer.js"></script>
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="cen1">
+        <div class="hear_de" onclick="window.history.back(-1); ">返回</div>
+        <div class="hear_log">忘记密码</div>
+    </div>
+</header>
+<!--第三部分-->
+<div class="center1 slider">
+    <div class="flor">
+        <div class="item2">
+            <div class="load">
+                <div class="load-bot1">
+                    <div class="box1">
+                        <input id="fogTel" name="account" type="text" placeholder="请输入手机号">
+                    </div>
+                </div>
+                <div class="load-bot1">
+                    <div class="box1 box2">
+                        <input name="pass" type="password" placeholder="请输入新密码">
+                    </div>
+                </div>
+                <div class="load-bot1">
+                    <div class="box1 box2 re">
+                        <input name="verificationCode" type="text" placeholder="请输入验证码">
+                    </div>
+                    <div class="regis">
+                        <input class="fog" type="button" value="获取验证码" onclick="getCode('#fogTel',1,'.fog')" style="background: #fff;border: 1px solid #ccc;padding: 5px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item3">
+            <div class="flor">
+                <button onclick="forgetPwd()">提交</button>
+            </div>
+            <a href="pregister.html">快速注册</a>
+            <a href="plogin.html" style="float: right">已有账号？请登录</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbAuthenticationMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbAuthentication">
+    <id column="a_id" jdbcType="BIGINT" property="aId" />
+    <result column="a_u_id" jdbcType="BIGINT" property="aUId" />
+    <result column="a_real_name" jdbcType="VARCHAR" property="aRealName" />
+    <result column="a_identity_card" jdbcType="VARCHAR" property="aIdentityCard" />
+    <result column="a_identity_card_picture" jdbcType="VARCHAR" property="aIdentityCardPicture" />
+    <result column="a_create_date" jdbcType="TIMESTAMP" property="aCreateDate" />
+    <result column="a_remark" jdbcType="VARCHAR" property="aRemark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    a_id, a_u_id, a_real_name, a_identity_card, a_identity_card_picture, a_create_date, 
+    a_remark
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbAuthenticationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_authentication
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_authentication
+    where a_id = #{aId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_authentication
+    where a_id = #{aId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbAuthenticationExample">
+    delete from tb_authentication
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbAuthentication">
+    insert into tb_authentication (a_id, a_u_id, a_real_name, 
+      a_identity_card, a_identity_card_picture, a_create_date, 
+      a_remark)
+    values (#{aId,jdbcType=BIGINT}, #{aUId,jdbcType=BIGINT}, #{aRealName,jdbcType=VARCHAR}, 
+      #{aIdentityCard,jdbcType=VARCHAR}, #{aIdentityCardPicture,jdbcType=VARCHAR}, #{aCreateDate,jdbcType=TIMESTAMP}, 
+      #{aRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbAuthentication">
+    insert into tb_authentication
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aId != null">
+        a_id,
+      </if>
+      <if test="aUId != null">
+        a_u_id,
+      </if>
+      <if test="aRealName != null">
+        a_real_name,
+      </if>
+      <if test="aIdentityCard != null">
+        a_identity_card,
+      </if>
+      <if test="aIdentityCardPicture != null">
+        a_identity_card_picture,
+      </if>
+      <if test="aCreateDate != null">
+        a_create_date,
+      </if>
+      <if test="aRemark != null">
+        a_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aId != null">
+        #{aId,jdbcType=BIGINT},
+      </if>
+      <if test="aUId != null">
+        #{aUId,jdbcType=BIGINT},
+      </if>
+      <if test="aRealName != null">
+        #{aRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="aIdentityCard != null">
+        #{aIdentityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="aIdentityCardPicture != null">
+        #{aIdentityCardPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="aCreateDate != null">
+        #{aCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aRemark != null">
+        #{aRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbAuthenticationExample" resultType="java.lang.Long">
+    select count(*) from tb_authentication
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_authentication
+    <set>
+      <if test="record.aId != null">
+        a_id = #{record.aId,jdbcType=BIGINT},
+      </if>
+      <if test="record.aUId != null">
+        a_u_id = #{record.aUId,jdbcType=BIGINT},
+      </if>
+      <if test="record.aRealName != null">
+        a_real_name = #{record.aRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aIdentityCard != null">
+        a_identity_card = #{record.aIdentityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aIdentityCardPicture != null">
+        a_identity_card_picture = #{record.aIdentityCardPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aCreateDate != null">
+        a_create_date = #{record.aCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.aRemark != null">
+        a_remark = #{record.aRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_authentication
+    set a_id = #{record.aId,jdbcType=BIGINT},
+      a_u_id = #{record.aUId,jdbcType=BIGINT},
+      a_real_name = #{record.aRealName,jdbcType=VARCHAR},
+      a_identity_card = #{record.aIdentityCard,jdbcType=VARCHAR},
+      a_identity_card_picture = #{record.aIdentityCardPicture,jdbcType=VARCHAR},
+      a_create_date = #{record.aCreateDate,jdbcType=TIMESTAMP},
+      a_remark = #{record.aRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbAuthentication">
+    update tb_authentication
+    <set>
+      <if test="aUId != null">
+        a_u_id = #{aUId,jdbcType=BIGINT},
+      </if>
+      <if test="aRealName != null">
+        a_real_name = #{aRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="aIdentityCard != null">
+        a_identity_card = #{aIdentityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="aIdentityCardPicture != null">
+        a_identity_card_picture = #{aIdentityCardPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="aCreateDate != null">
+        a_create_date = #{aCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aRemark != null">
+        a_remark = #{aRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where a_id = #{aId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbAuthentication">
+    update tb_authentication
+    set a_u_id = #{aUId,jdbcType=BIGINT},
+      a_real_name = #{aRealName,jdbcType=VARCHAR},
+      a_identity_card = #{aIdentityCard,jdbcType=VARCHAR},
+      a_identity_card_picture = #{aIdentityCardPicture,jdbcType=VARCHAR},
+      a_create_date = #{aCreateDate,jdbcType=TIMESTAMP},
+      a_remark = #{aRemark,jdbcType=VARCHAR}
+    where a_id = #{aId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbUserRole">
+    <id column="ur_id" jdbcType="BIGINT" property="urId" />
+    <result column="ur_r_id" jdbcType="BIGINT" property="urRId" />
+    <result column="ur_u_id" jdbcType="BIGINT" property="urUId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ur_id, ur_r_id, ur_u_id
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbUserRoleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user_role
+    where ur_id = #{urId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_user_role
+    where ur_id = #{urId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbUserRoleExample">
+    delete from tb_user_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbUserRole">
+    insert into tb_user_role (ur_id, ur_r_id, ur_u_id
+      )
+    values (#{urId,jdbcType=BIGINT}, #{urRId,jdbcType=BIGINT}, #{urUId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbUserRole">
+    insert into tb_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urId != null">
+        ur_id,
+      </if>
+      <if test="urRId != null">
+        ur_r_id,
+      </if>
+      <if test="urUId != null">
+        ur_u_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urId != null">
+        #{urId,jdbcType=BIGINT},
+      </if>
+      <if test="urRId != null">
+        #{urRId,jdbcType=BIGINT},
+      </if>
+      <if test="urUId != null">
+        #{urUId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbUserRoleExample" resultType="java.lang.Long">
+    select count(*) from tb_user_role
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_user_role
+    <set>
+      <if test="record.urId != null">
+        ur_id = #{record.urId,jdbcType=BIGINT},
+      </if>
+      <if test="record.urRId != null">
+        ur_r_id = #{record.urRId,jdbcType=BIGINT},
+      </if>
+      <if test="record.urUId != null">
+        ur_u_id = #{record.urUId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_user_role
+    set ur_id = #{record.urId,jdbcType=BIGINT},
+      ur_r_id = #{record.urRId,jdbcType=BIGINT},
+      ur_u_id = #{record.urUId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbUserRole">
+    update tb_user_role
+    <set>
+      <if test="urRId != null">
+        ur_r_id = #{urRId,jdbcType=BIGINT},
+      </if>
+      <if test="urUId != null">
+        ur_u_id = #{urUId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ur_id = #{urId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbUserRole">
+    update tb_user_role
+    set ur_r_id = #{urRId,jdbcType=BIGINT},
+      ur_u_id = #{urUId,jdbcType=BIGINT}
+    where ur_id = #{urId,jdbcType=BIGINT}
+  </update>
+</mapper>

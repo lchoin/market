@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>太空商城</title>
+    <script src="/css/framework/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/framework/bootstrap-3.3.0-dist/css/bootstrap.min.css">
+    <script src="/css/framework/bootstrap-3.3.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/pindex.css">
+    <link rel="stylesheet" href="/css/pstyle.css">
+    <script src="/js/pdinate.js"></script>
+    <link rel="stylesheet" href="/js/need/layer.css">
+    <script src="/js/layer.js"></script>
+
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="cen1">
+        <div class="hear_de" onclick="returnload(3)">返回</div>
+        <div class="hear_log">修改密码</div>
+    </div>
+</header>
+<!--第二部分-->
+<div class="center1">
+    <div style="padding: 10px">
+        <table class="sel_tab modifyPwd">
+            <tbody>
+            <tr>
+                <td class="title">原始密码：</td>
+                <td><input type="password" class="oldPasswd" name="oldPasswd" placeholder="原始密码"></td>
+            </tr>
+            <tr>
+                <td class="title" >新密码：</td>
+                <td><input type="password" class="passwd" name="passwd" placeholder="新密码"></td>
+            </tr>
+            <tr>
+                <td class="title">确认密码：</td>
+                <td><input type="password" class="passwd2" name="passwd2" placeholder="确认密码"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="height:80px"></div>
+</div>
+<div>
+    <div class="bts_1"></div>
+    <div class="bts" onclick="modifyPwd()">保存</div>
+</div>
+
+</body>
+</html>

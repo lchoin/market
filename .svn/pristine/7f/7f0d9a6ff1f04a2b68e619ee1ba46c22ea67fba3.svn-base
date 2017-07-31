@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbConsumptionMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbConsumption">
+    <id column="c_id" jdbcType="BIGINT" property="cId" />
+    <result column="c_u_id" jdbcType="BIGINT" property="cUId" />
+    <result column="c_money" jdbcType="DECIMAL" property="cMoney" />
+    <result column="c_source" jdbcType="VARCHAR" property="cSource" />
+    <result column="c_create_date" jdbcType="TIMESTAMP" property="cCreateDate" />
+    <result column="c_remark" jdbcType="VARCHAR" property="cRemark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    c_id, c_u_id, c_money, c_source, c_create_date, c_remark
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbConsumptionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_consumption
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_consumption
+    where c_id = #{cId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_consumption
+    where c_id = #{cId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbConsumptionExample">
+    delete from tb_consumption
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbConsumption">
+    insert into tb_consumption (c_id, c_u_id, c_money, 
+      c_source, c_create_date, c_remark
+      )
+    values (#{cId,jdbcType=BIGINT}, #{cUId,jdbcType=BIGINT}, #{cMoney,jdbcType=DECIMAL}, 
+      #{cSource,jdbcType=VARCHAR}, #{cCreateDate,jdbcType=TIMESTAMP}, #{cRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbConsumption">
+    insert into tb_consumption
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cUId != null">
+        c_u_id,
+      </if>
+      <if test="cMoney != null">
+        c_money,
+      </if>
+      <if test="cSource != null">
+        c_source,
+      </if>
+      <if test="cCreateDate != null">
+        c_create_date,
+      </if>
+      <if test="cRemark != null">
+        c_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cId != null">
+        #{cId,jdbcType=BIGINT},
+      </if>
+      <if test="cUId != null">
+        #{cUId,jdbcType=BIGINT},
+      </if>
+      <if test="cMoney != null">
+        #{cMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="cSource != null">
+        #{cSource,jdbcType=VARCHAR},
+      </if>
+      <if test="cCreateDate != null">
+        #{cCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cRemark != null">
+        #{cRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbConsumptionExample" resultType="java.lang.Long">
+    select count(*) from tb_consumption
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_consumption
+    <set>
+      <if test="record.cId != null">
+        c_id = #{record.cId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cUId != null">
+        c_u_id = #{record.cUId,jdbcType=BIGINT},
+      </if>
+      <if test="record.cMoney != null">
+        c_money = #{record.cMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cSource != null">
+        c_source = #{record.cSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cCreateDate != null">
+        c_create_date = #{record.cCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cRemark != null">
+        c_remark = #{record.cRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_consumption
+    set c_id = #{record.cId,jdbcType=BIGINT},
+      c_u_id = #{record.cUId,jdbcType=BIGINT},
+      c_money = #{record.cMoney,jdbcType=DECIMAL},
+      c_source = #{record.cSource,jdbcType=VARCHAR},
+      c_create_date = #{record.cCreateDate,jdbcType=TIMESTAMP},
+      c_remark = #{record.cRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbConsumption">
+    update tb_consumption
+    <set>
+      <if test="cUId != null">
+        c_u_id = #{cUId,jdbcType=BIGINT},
+      </if>
+      <if test="cMoney != null">
+        c_money = #{cMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="cSource != null">
+        c_source = #{cSource,jdbcType=VARCHAR},
+      </if>
+      <if test="cCreateDate != null">
+        c_create_date = #{cCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cRemark != null">
+        c_remark = #{cRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_id = #{cId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbConsumption">
+    update tb_consumption
+    set c_u_id = #{cUId,jdbcType=BIGINT},
+      c_money = #{cMoney,jdbcType=DECIMAL},
+      c_source = #{cSource,jdbcType=VARCHAR},
+      c_create_date = #{cCreateDate,jdbcType=TIMESTAMP},
+      c_remark = #{cRemark,jdbcType=VARCHAR}
+    where c_id = #{cId,jdbcType=BIGINT}
+  </update>
+</mapper>

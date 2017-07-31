@@ -1,0 +1,238 @@
+<script>
+    viewMerCharge();
+    /*右侧下拉*/
+    $(function(){
+        $(".btn_show_new").on("click",function(){
+            $(this).parent().addClass("none");
+            $(this).parent().next().slideDown(100)
+        })
+        $(".btn_hide_new").on("click",function(){
+            $(".search_box_new").removeClass("none");
+            $(".sel_tab").slideUp(0);
+
+        });
+    })
+</script>
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        管理商品
+    </ul><!-- .breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12 center">
+            <!-- PAGE CONTENT BEGINS -->
+            <!--添加-->
+            <div class="search_box_new">
+                <a href="javascript:void(0)" class="btn_show_new">添加商品</a>
+            </div>
+            <table class="sel_tab none">
+                <tbody>
+                <tr>
+                    <td class="title">名称</td>
+                    <td><input type="text" name="gName"></td>
+                    <td class="title">价格</td>
+                    <td><input type="text" name="gPrice">元</td>
+                </tr>
+                <tr>
+                    <td class="title">运费</td>
+                    <td><input type="text" name="gFreight">元</td>
+                    <td class="title">库存</td>
+                    <td><input type="text" name="gInventory">件</td>
+                </tr>
+                <tr>
+                    <td class="title">备注</td>
+                    <td colspan="3">
+                        <textarea name="gRemark" id="" style="width:90%"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">图片</td>
+                    <td width="17%">
+                        <div class="btn btn-info total">
+                            <span>上传图片</span>
+                            <input type="text" id="pictureStr" name="gPicture"  value="" style="visibility: hidden;width:10px">
+                            <form  enctype='multipart/form-data' method='post' action='javascript:;'  id="uploadImgFile" style="display: inline-block;position: absolute;top:0;left:0">
+                                <input type = "file" name = "pictureFile"  onchange = "uploadImg('#uploadImgFile','.pic','#pictureStr')" class="file-input" size="1"  style="opacity:0;z-index: 11;position: absolute;top:0"/>
+                            </form>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <ul class="pic"></ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">商品详情图片</td>
+                    <td width="17%">
+                        <div class="btn btn-info total">
+                            <span>上传详情图</span>
+                            <input type="text" id="detailsImg" name="gDetails"  value="" style="visibility: hidden;width:10px">
+                            <form  enctype='multipart/form-data' method='post' action='javascript:;'  id="frm1" style="display: inline-block;position: absolute;top:0;left:0">
+                                <input type = "file" name = "pictureFile"  onchange = "uploadImg('#frm1','.pic2','#detailsImg')" class="file-input" size="1"  style="opacity:0;z-index: 11;position: absolute;top:0"/>
+                            </form>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <ul class="pic2">
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center">
+                        <button class="btn btn-info" type="button" onclick="addShopping()">
+                            <i class="icon-ok bigger-110"></i>
+                            提交
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="border:none; line-height:16px; padding:0; height:16px;">
+                        <a href="javascript:void(0);" class="btn_hide_new"><span>收起</span></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--查看商品-->
+            <table style="margin-top:20px">
+                <thead>
+                <tr>
+                    <th colspan="11" style="text-align: center;font-weight: bold;font-size: 20px;letter-spacing: 3px">查看全部商品</th>
+                </tr>
+                <tr>
+                    <th>名称</th>
+                    <th>价格</th>
+                    <th>运费</th>
+                    <th>数量</th>
+                    <th>库存</th>
+                    <th>备注</th>
+                    <th>图片</th>
+                    <th>商品详情图片</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody class="viewTask" id="viewTask">
+                <tr class="none">
+                    <td style="max-width: 300px"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td width="10%">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+            <div style="width:100%;height:10px"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<!--查看图片-->
+<div class="modal fade" id="showPic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">查看图片</h4>
+            </div>
+            <div class="modal-body pis" style="position: relative">
+                <div>
+                    <span class="fc-button fc-button-prev fc-state-default fc-corner-left" style="position: absolute;left:0;top:50%;font-size: 30px;cursor: pointer" onclick="prevImg()"><i class="icon-chevron-left"></i></span>
+                    <span class="fc-button fc-button-next fc-state-default fc-corner-right"  style="position: absolute;right:0;top:50%;font-size: 30px;cursor: pointer" onclick="nextImg()"><i class="icon-chevron-right"></i></span>
+                    <img class="showImg" src="" width="100%">
+                    <div class="visibilyImg" style="visibility: hidden;overflow: hidden;width:1px;height:1px"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--修改-->
+<div class="modal fade" id="modifyGoodsData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改商品</h4>
+            </div>
+            <div class="modal-body">
+                <table class="modifyGoo">
+                    <tr style="display: none">
+                        <td class="title">商品ID</td>
+                        <td class="gId" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="title">名称</td>
+                        <td colspan="2"><input type="text" name="gName"></td>
+                    </tr>
+                    <tr>
+                        <td class="title">图片</td>
+                        <td width="15%">
+                            <div class="btn btn-info total">
+                                <span>上传图片</span>
+                                <input type="text" id="mod" name="gPicture"  value="" style="visibility: hidden;width:10px">
+                                <form  enctype='multipart/form-data' method='post' action='javascript:;'  id="ups" style="display: inline-block;position: absolute;top:0;left:0">
+                                    <input type = "file" name = "pictureFile"  onchange = "uploadImg('#ups','.pic3','#mod')" class="file-input" size="1"  style="opacity:0;z-index: 11;position: absolute;top:0"/>
+                                </form>
+                            </div>
+                        </td>
+                        <td>
+                            <ul class="pic3"></ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">价格</td>
+                        <td colspan="2"><input type="text" name="gPrice">元</td>
+                    </tr>
+                    <tr>
+                        <td class="title">运费</td>
+                        <td colspan="2"><input type="text" name="gFreight">元</td>
+                    </tr>
+                    <tr>
+                        <td class="title">库存</td>
+                        <td colspan="2"><input type="text" name="gInventory">件</td>
+                    </tr>
+                    <tr>
+                        <td class="title">商品详情图片</td>
+                        <td width="15%">
+                            <div class="btn btn-info total">
+                                <span>上传图片</span>
+                                <input type="text" id="mod1" name="gDetails"  value="" style="visibility: hidden;width:10px">
+                                <form  enctype='multipart/form-data' method='post' action='javascript:;'  id="ups1" style="display: inline-block;position: absolute;top:0;left:0">
+                                    <input type = "file" name = "pictureFile"  onchange = "uploadImg('#ups1','.pic4','#mod1')" class="file-input" size="1"  style="opacity:0;z-index: 11;position: absolute;top:0"/>
+                                </form>
+                            </div>
+                        </td>
+                        <td>
+                            <ul class="pic4"></ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">备注</td>
+                        <td colspan="2">
+                            <textarea name="gRemark" style="width:97%"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default modGood" onclick="addMOdGoods()">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

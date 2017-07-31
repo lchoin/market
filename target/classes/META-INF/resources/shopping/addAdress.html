@@ -1,0 +1,100 @@
+<script>
+    viewAdress();
+    /*右侧下拉*/
+    $(function(){
+        $(".btn_show_new").on("click",function(){
+            $(this).parent().addClass("none");
+            $(this).parent().next().slideDown(100)
+        })
+        $(".btn_hide_new").on("click",function(){
+            $(".search_box_new").removeClass("none");
+            $(".sel_tab").slideUp(0);
+
+        });
+    })
+</script>
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        收货地址管理
+    </ul><!-- .breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12 center">
+            <!-- PAGE CONTENT BEGINS -->
+            <!--添加地址-->
+            <div class="search_box_new">
+                <a href="javascript:void(0)" class="btn_show_new">添加地址</a>
+            </div>
+            <table id="addAdre" class="sel_tab none">
+                <tr>
+                    <td class="title">收货人</td>
+                    <td><input type="text" name="daName"></td>
+                    <td class="title">手机号</td>
+                    <td><input type="text" name="daPhone"></td>
+                </tr>
+                <tr>
+                    <td class="title">详细地址</td>
+                    <td><input type="text" name="daDetailAddress"></td>
+                    <td class="title">是否默认</td>
+                    <td>
+                        <input type="radio" name="daIsDefault" value="0" checked>否
+                        <input type="radio" name="daIsDefault" value="1">是
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">备注</td>
+                    <td colspan="3">
+                        <textarea name="daRemark" ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: center">
+                        <button class="btn btn-info" type="button" onclick="addAdress()">
+                            <i class="icon-ok bigger-110"></i>
+                            提交
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="border:none; line-height:16px; padding:0; height:16px;">
+                        <a href="javascript:void(0);" class="btn_hide_new"><span>收起</span></a>
+                    </td>
+                </tr>
+            </table>
+            <!--查看收货地址-->
+            <table class="showAdress" style="margin-top:20px">
+                <thead>
+                <tr>
+                    <th colspan="6" style="font-size: 18px">查看收货地址</th>
+                </tr>
+                <tr>
+                    <th>收货人</th>
+                    <th>手机号</th>
+                    <th>详细地址</th>
+                    <th>是否默认</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody class="viewAdr">
+                <tr class="none">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td width="15%"></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+
+            <div style="width:100%;height:10px"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->

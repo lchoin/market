@@ -1,0 +1,114 @@
+.none{display: none}
+.left{float: left}
+.right{float: right}
+.clear{overflow: hidden}
+/*商城*/
+.shop li{float:left;width:50%;padding:5px}
+.goodsList{border:1px solid #ccc;padding:5px}
+.goodsList>div{margin:2px}
+.clearfix {zoom: 1;}
+.shop {margin:0 7px;overflow: hidden; }
+.sImg img{width:100%;height:200px}
+.sPrice{font-size: 16px;font-weight: bold}
+/*查看订单*/
+.tises>div{display: inline-block;margin:2px 20px;}
+.lisr>tr td{padding:10px;width:100%}
+.frim>div{margin:5px 10px}
+.lisr>tr td>div>img{width:60px;height:60px}
+.sow td{text-align: center;padding:5px}
+/*个人中心*/
+.contain{background: url("/images/bg.png");background-color: #da0006  ;position: relative;}
+/*顶部*/
+header{background-color:#3E3A39;color:#fff;height:46px;width:100% ;font-size: 16px;position:fixed;z-index: 1}
+.cen{padding:10px;text-align: center}
+.cen1{padding:10px;width:80%;text-align: center}
+.cen div{display: inline-block;}
+.hear_de{float: left;padding-left:20px;background: url("/images/back.png") no-repeat left bottom;background-size: contain}
+/*第二部分*/
+.center1{padding-top:50px}
+.lis{padding:20px 20px 10px;text-align: center;overflow: hidden}
+.lis .tops>div{display: inline-block}
+.igl{border:3px solid #fff;height:80px;width:80px;border-radius:50%;overflow: hidden}
+.igr1{color:#fff;position: absolute;top: 0;width: 100%;height: 100%;}
+.view3{float: right;color:#fff;padding: 5px}
+.ends{text-align: center;font-size: 14px;color:#fff;}
+.end-cen div{margin:10px;}
+/*第三部分*/
+.roll{background-color: #e9e9e9}
+.rolls-one{padding:10px 20px; overflow: hidden;}
+.rolls-one>div{width:52%;height:40px;border:1px solid #ccc;border-radius:5px;text-align: center;line-height: 40px;letter-spacing: 6px;font-size: 16px;margin: 0 auto}
+.plateBtn{background-color: #e60012;color:#fff;border-color: #e60012; }
+.roll-center>ul>li{padding:5px 10px;line-height: 30px;background-color: #fff;margin:5px 0}
+.recharge span{padding-left: 50px;display: inline-block;background-size: contain;margin-bottom: 0}
+.recharge a:visited{text-decoration: none;color:#000000}
+.r-02{background: url("/images/icon2_07.png") no-repeat;}
+.r-03{background: url("/images/icon2_10.png") no-repeat;}
+.r-04{background: url("/images/icon2_12.png") no-repeat;}
+.r-05{background: url("/images/icon2_14.png") no-repeat;}
+.r-06{background: url("/images/icon2_16.png") no-repeat;}
+
+
+/*底部*/
+.menu .last{height:61px}
+.menu .footer{width:100%;height:60px;border-top:1px solid #ccc;position:fixed;bottom:0;background-color:#f7f7f7 ;z-index: 999;}
+.footer ul{padding:10px 0;display: -webkit-flex;  display: flex;}
+.footer li{float:left;padding:0;flex: 2;text-align: center}
+.footer li i{position: relative;margin: 0 auto;width: 29px;height: 29px; display: block;background: url(/images/footer1.png) 0px 0px no-repeat;background-size: 145px 58px;font-style: normal;}
+.footer li i.imgtu1{background-position: -35px 0px;  }
+.footer li i.imgtu2{background-position:  -70px 0px;  }
+.footer li i.imgtu3{background-position: -105px 0px;  }
+.footer li i.imgtu4{background-position: 0px 0px;  }
+.footer li.active i.imgtu1{background-position: -35px -30px;  }
+.footer li.active i.imgtu2{background-position: -73px -30px;  }
+.footer li.active i.imgtu3{background-position: -109px -30px;  }
+.footer li.active i.imgtu4{background-position: 0px -30px;  }
+.footer li.active p{color:red}
+#gotop{background:url("/images/top.png") no-repeat scroll 0 0 transparent;bottom:10px;right:10px;height:38px;width:38px;position:fixed;display: none}
+/*收货地址*/
+.adress_line{background-color: red;width: 80%;text-align: center;color:#fff;padding:8px;font-size: 16px;border-radius: 5px;margin: auto;position: fixed;bottom:80px;left:10%}
+.showAdress>div{margin:3px}
+/*新增收货地址*/
+.sel_tab{width: 100%}
+.sel_tab td{padding:5px;height:38px}
+.sel_tab tr{border-bottom: 1px solid #ccc}
+.sel_tab td.title,.sel-tab td.title,table.member td.title,table.pcomments td.title{ width: 1px;white-space: nowrap;word-break:  keep-all; }
+table.pcomments td{padding:3px}
+.sel_tab input[type='text'],.sel_tab input[type='tel'],.sel_tab textarea{width: 100%;border:none}
+.bts{background-color: red;width: 80%;text-align: center;color:#fff;padding:8px;font-size: 16px;border-radius: 5px;margin: auto;position: fixed;bottom:30px;left:10%}
+.inte td input[type='text'],.inte td input[type='tel'],.inte td textarea{border:1px solid #ccc}
+.bts_1{background-color: #fff;width:100%;text-align: center;padding:8px;font-size: 16px;border-radius: 5px;margin: auto;position: fixed;bottom:0px;height:70px}
+table.member{width: 100%;background-color:#F0F0F0;border: 1px solid #ccc;margin-bottom: 5px}
+table.member th,table.member td{min-height:30px;text-align: left;padding:5px;}
+/*用户认证*/
+.sel-tab tr{border-bottom:1px solid #ccc;}
+.sel-tab td{width: 100%;padding:8px;font-size:14px}
+.sel-tab td input,.sel-tab td textarea{width:100%;border:none}
+
+/*登录*/
+.plog{position: absolute;top: 50%;left: 50%;width: 200px;margin-left: -90px;font-size: 20px;color:#fff;font-weight: bold}
+.message{display: none;padding-top:10px}
+.flor{padding:7px}
+.item2{padding:10px 0;color:#b5b5b5}
+.load-bot1{height:30px;border-bottom: 1px solid #b5b5b5;margin-top:15px}
+.re{display: inline-block;width:55%}
+.re input{width:80%}
+.regis{width:22%;height:30px;float:right;margin-right:20px;margin-top: -8px}
+.regis img{width:100%;height:30px}
+.last{border-bottom:none;}
+.box1{padding-left:30px;background: url("/images/log_15.jpg") no-repeat;background-size: contain}
+.box1 input{height:20px;border:none;font-size: 16px;}
+.box2{background: url("/images/log_18.png") no-repeat;background-size: contain}
+.item3 .flor{padding:10px}
+.item3 .flor button{background-color:#E53B3B;color:#fff;text-align: center;width:100%;border:none;border-radius: 5px;height:40px;font-size:20px}
+/*商品详情*/
+.detail-hear{float:left;height:100%;padding:0 10px;font-weight: bold}
+.clear .active a{color:#FF2A4E}
+.clear>div>a{color:#fff}
+.fos{width: 100%;height:70px;position: fixed;bottom: 0;border-top:1px solid #ccc;background-color: #fff}
+.buy2{background-color:#FD2D45;height:50px;float: right;line-height: 50px;padding:0 30px;color:#fff;font-size: 16px;border-radius: 5px;margin-right: 10px;margin-top:10px}
+.detailData>div{margin:5px;}
+/*星级评论*/
+#box{height:20px;width:200px; }
+#box ul#imgul{overflow:hidden;}
+#box ul#imgul li{  float:left;  height:27px;  width:27px;  background:url("/images/star.gif") no-repeat;  list-style:none;  }
+#box #imgul li.active{background-position:0 -29px;}

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbPersonIndentMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbPersonIndent">
+    <id column="pi_id" jdbcType="VARCHAR" property="piId" />
+    <result column="pi_g_id" jdbcType="BIGINT" property="piGId" />
+    <result column="pi_u_id" jdbcType="BIGINT" property="piUId" />
+    <result column="da_id" jdbcType="BIGINT" property="daId" />
+    <result column="da_phone" jdbcType="CHAR" property="daPhone" />
+    <result column="da_detail_address" jdbcType="VARCHAR" property="daDetailAddress" />
+    <result column="pi_evaluate_language" jdbcType="VARCHAR" property="piEvaluateLanguage" />
+    <result column="pi_evaluate_grade" jdbcType="CHAR" property="piEvaluateGrade" />
+    <result column="pi_status" jdbcType="CHAR" property="piStatus" />
+    <result column="pi_create_date" jdbcType="TIMESTAMP" property="piCreateDate" />
+    <result column="pi_shipments_date" jdbcType="TIMESTAMP" property="piShipmentsDate" />
+    <result column="pi_arrival_date" jdbcType="TIMESTAMP" property="piArrivalDate" />
+    <result column="pi_quantity" jdbcType="INTEGER" property="piQuantity" />
+    <result column="pi_tracking_number" jdbcType="VARCHAR" property="piTrackingNumber" />
+    <result column="pi_carrier_code" jdbcType="VARCHAR" property="piCarrierCode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pi_id, pi_g_id, pi_u_id, da_id, da_phone, da_detail_address, pi_evaluate_language, 
+    pi_evaluate_grade, pi_status, pi_create_date, pi_shipments_date, pi_arrival_date, 
+    pi_quantity, pi_tracking_number, pi_carrier_code
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbPersonIndentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_person_indent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_person_indent
+    where pi_id = #{piId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tb_person_indent
+    where pi_id = #{piId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbPersonIndentExample">
+    delete from tb_person_indent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbPersonIndent">
+    insert into tb_person_indent (pi_id, pi_g_id, pi_u_id, 
+      da_id, da_phone, da_detail_address, 
+      pi_evaluate_language, pi_evaluate_grade, pi_status, 
+      pi_create_date, pi_shipments_date, pi_arrival_date, 
+      pi_quantity, pi_tracking_number, pi_carrier_code
+      )
+    values (#{piId,jdbcType=VARCHAR}, #{piGId,jdbcType=BIGINT}, #{piUId,jdbcType=BIGINT}, 
+      #{daId,jdbcType=BIGINT}, #{daPhone,jdbcType=CHAR}, #{daDetailAddress,jdbcType=VARCHAR}, 
+      #{piEvaluateLanguage,jdbcType=VARCHAR}, #{piEvaluateGrade,jdbcType=CHAR}, #{piStatus,jdbcType=CHAR}, 
+      #{piCreateDate,jdbcType=TIMESTAMP}, #{piShipmentsDate,jdbcType=TIMESTAMP}, #{piArrivalDate,jdbcType=TIMESTAMP}, 
+      #{piQuantity,jdbcType=INTEGER}, #{piTrackingNumber,jdbcType=VARCHAR}, #{piCarrierCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbPersonIndent">
+    insert into tb_person_indent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="piId != null">
+        pi_id,
+      </if>
+      <if test="piGId != null">
+        pi_g_id,
+      </if>
+      <if test="piUId != null">
+        pi_u_id,
+      </if>
+      <if test="daId != null">
+        da_id,
+      </if>
+      <if test="daPhone != null">
+        da_phone,
+      </if>
+      <if test="daDetailAddress != null">
+        da_detail_address,
+      </if>
+      <if test="piEvaluateLanguage != null">
+        pi_evaluate_language,
+      </if>
+      <if test="piEvaluateGrade != null">
+        pi_evaluate_grade,
+      </if>
+      <if test="piStatus != null">
+        pi_status,
+      </if>
+      <if test="piCreateDate != null">
+        pi_create_date,
+      </if>
+      <if test="piShipmentsDate != null">
+        pi_shipments_date,
+      </if>
+      <if test="piArrivalDate != null">
+        pi_arrival_date,
+      </if>
+      <if test="piQuantity != null">
+        pi_quantity,
+      </if>
+      <if test="piTrackingNumber != null">
+        pi_tracking_number,
+      </if>
+      <if test="piCarrierCode != null">
+        pi_carrier_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="piId != null">
+        #{piId,jdbcType=VARCHAR},
+      </if>
+      <if test="piGId != null">
+        #{piGId,jdbcType=BIGINT},
+      </if>
+      <if test="piUId != null">
+        #{piUId,jdbcType=BIGINT},
+      </if>
+      <if test="daId != null">
+        #{daId,jdbcType=BIGINT},
+      </if>
+      <if test="daPhone != null">
+        #{daPhone,jdbcType=CHAR},
+      </if>
+      <if test="daDetailAddress != null">
+        #{daDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="piEvaluateLanguage != null">
+        #{piEvaluateLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="piEvaluateGrade != null">
+        #{piEvaluateGrade,jdbcType=CHAR},
+      </if>
+      <if test="piStatus != null">
+        #{piStatus,jdbcType=CHAR},
+      </if>
+      <if test="piCreateDate != null">
+        #{piCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piShipmentsDate != null">
+        #{piShipmentsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piArrivalDate != null">
+        #{piArrivalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piQuantity != null">
+        #{piQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="piTrackingNumber != null">
+        #{piTrackingNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="piCarrierCode != null">
+        #{piCarrierCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbPersonIndentExample" resultType="java.lang.Long">
+    select count(*) from tb_person_indent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_person_indent
+    <set>
+      <if test="record.piId != null">
+        pi_id = #{record.piId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.piGId != null">
+        pi_g_id = #{record.piGId,jdbcType=BIGINT},
+      </if>
+      <if test="record.piUId != null">
+        pi_u_id = #{record.piUId,jdbcType=BIGINT},
+      </if>
+      <if test="record.daId != null">
+        da_id = #{record.daId,jdbcType=BIGINT},
+      </if>
+      <if test="record.daPhone != null">
+        da_phone = #{record.daPhone,jdbcType=CHAR},
+      </if>
+      <if test="record.daDetailAddress != null">
+        da_detail_address = #{record.daDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.piEvaluateLanguage != null">
+        pi_evaluate_language = #{record.piEvaluateLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.piEvaluateGrade != null">
+        pi_evaluate_grade = #{record.piEvaluateGrade,jdbcType=CHAR},
+      </if>
+      <if test="record.piStatus != null">
+        pi_status = #{record.piStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.piCreateDate != null">
+        pi_create_date = #{record.piCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.piShipmentsDate != null">
+        pi_shipments_date = #{record.piShipmentsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.piArrivalDate != null">
+        pi_arrival_date = #{record.piArrivalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.piQuantity != null">
+        pi_quantity = #{record.piQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.piTrackingNumber != null">
+        pi_tracking_number = #{record.piTrackingNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.piCarrierCode != null">
+        pi_carrier_code = #{record.piCarrierCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_person_indent
+    set pi_id = #{record.piId,jdbcType=VARCHAR},
+      pi_g_id = #{record.piGId,jdbcType=BIGINT},
+      pi_u_id = #{record.piUId,jdbcType=BIGINT},
+      da_id = #{record.daId,jdbcType=BIGINT},
+      da_phone = #{record.daPhone,jdbcType=CHAR},
+      da_detail_address = #{record.daDetailAddress,jdbcType=VARCHAR},
+      pi_evaluate_language = #{record.piEvaluateLanguage,jdbcType=VARCHAR},
+      pi_evaluate_grade = #{record.piEvaluateGrade,jdbcType=CHAR},
+      pi_status = #{record.piStatus,jdbcType=CHAR},
+      pi_create_date = #{record.piCreateDate,jdbcType=TIMESTAMP},
+      pi_shipments_date = #{record.piShipmentsDate,jdbcType=TIMESTAMP},
+      pi_arrival_date = #{record.piArrivalDate,jdbcType=TIMESTAMP},
+      pi_quantity = #{record.piQuantity,jdbcType=INTEGER},
+      pi_tracking_number = #{record.piTrackingNumber,jdbcType=VARCHAR},
+      pi_carrier_code = #{record.piCarrierCode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbPersonIndent">
+    update tb_person_indent
+    <set>
+      <if test="piGId != null">
+        pi_g_id = #{piGId,jdbcType=BIGINT},
+      </if>
+      <if test="piUId != null">
+        pi_u_id = #{piUId,jdbcType=BIGINT},
+      </if>
+      <if test="daId != null">
+        da_id = #{daId,jdbcType=BIGINT},
+      </if>
+      <if test="daPhone != null">
+        da_phone = #{daPhone,jdbcType=CHAR},
+      </if>
+      <if test="daDetailAddress != null">
+        da_detail_address = #{daDetailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="piEvaluateLanguage != null">
+        pi_evaluate_language = #{piEvaluateLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="piEvaluateGrade != null">
+        pi_evaluate_grade = #{piEvaluateGrade,jdbcType=CHAR},
+      </if>
+      <if test="piStatus != null">
+        pi_status = #{piStatus,jdbcType=CHAR},
+      </if>
+      <if test="piCreateDate != null">
+        pi_create_date = #{piCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piShipmentsDate != null">
+        pi_shipments_date = #{piShipmentsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piArrivalDate != null">
+        pi_arrival_date = #{piArrivalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piQuantity != null">
+        pi_quantity = #{piQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="piTrackingNumber != null">
+        pi_tracking_number = #{piTrackingNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="piCarrierCode != null">
+        pi_carrier_code = #{piCarrierCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pi_id = #{piId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbPersonIndent">
+    update tb_person_indent
+    set pi_g_id = #{piGId,jdbcType=BIGINT},
+      pi_u_id = #{piUId,jdbcType=BIGINT},
+      da_id = #{daId,jdbcType=BIGINT},
+      da_phone = #{daPhone,jdbcType=CHAR},
+      da_detail_address = #{daDetailAddress,jdbcType=VARCHAR},
+      pi_evaluate_language = #{piEvaluateLanguage,jdbcType=VARCHAR},
+      pi_evaluate_grade = #{piEvaluateGrade,jdbcType=CHAR},
+      pi_status = #{piStatus,jdbcType=CHAR},
+      pi_create_date = #{piCreateDate,jdbcType=TIMESTAMP},
+      pi_shipments_date = #{piShipmentsDate,jdbcType=TIMESTAMP},
+      pi_arrival_date = #{piArrivalDate,jdbcType=TIMESTAMP},
+      pi_quantity = #{piQuantity,jdbcType=INTEGER},
+      pi_tracking_number = #{piTrackingNumber,jdbcType=VARCHAR},
+      pi_carrier_code = #{piCarrierCode,jdbcType=VARCHAR}
+    where pi_id = #{piId,jdbcType=VARCHAR}
+  </update>
+</mapper>

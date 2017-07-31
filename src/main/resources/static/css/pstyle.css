@@ -1,0 +1,16 @@
+body,h1,h2,h3,h4,h5,dl,dt,ul,ol,li,span,img,div,section,header{margin:0px;padding:0px}
+body{font-size: 12px}
+a{text-decoration: none;}
+header{font-size: 14px}
+ul,li{list-style:none}
+.btn{font-size:12px}
+img{border:none;}
+ol li{background-color: green}
+section{background-color: #efefef}
+.clear{clear:both}
+h2{font-size:14px;font-weight:bold;margin:10px 0 5px}
+h5{font-size:xx-small;color:#ccc;font-weight:100}
+
+a{text-decoration: none;outline: none;color:#000}
+.tp{font-size:0}
+.jt{width:20px;height:30px;float:right;background: url("../images/jt_03.png") no-repeat;margin-top:10px}

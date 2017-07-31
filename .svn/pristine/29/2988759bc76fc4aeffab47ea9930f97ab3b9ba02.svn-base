@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>太空商城</title>
+    <script src="/css/framework/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/framework/bootstrap-3.3.0-dist/css/bootstrap.min.css">
+    <script src="/css/framework/bootstrap-3.3.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/pindex.css">
+    <link rel="stylesheet" href="/js/need/layer.css">
+    <script src="/js/layer.js"></script>
+    <script src="/js/pdinate.js"></script>
+
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="cen1">
+        <div class="hear_de"  onclick="returnload(2)">返回</div>
+        <div class="hear_log">新增收货地址</div>
+    </div>
+</header>
+<!--第二部分-->
+<div class="center1">
+    <div style="padding: 10px">
+        <table class="sel_tab " id="addAdre">
+            <tr>
+                <td class="title">收货人：</td>
+                <td><input type="text" name="daName"></td>
+            </tr>
+            <tr>
+                <td class="title">手机号：</td>
+                <td><input type="text" name="daPhone"></td>
+            </tr>
+            <tr>
+                <td class="title">详细地址：</td>
+                <td><input type="text" name="daDetailAddress"></td>
+            </tr>
+            <tr>
+                <td class="title">是否默认：</td>
+                <td>
+                    <input type="radio" name="daIsDefault" value="0" checked>否
+                    <input type="radio" name="daIsDefault" value="1">是
+                </td>
+            </tr>
+            <tr>
+                <td class="title">备注：</td>
+                <td colspan="3">
+                    <textarea name="daRemark" ></textarea>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+
+</div>
+<div class="bts" onclick="addAdress()">保存</div>
+
+</body>
+</html>

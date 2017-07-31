@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>太空商城</title>
+    <link rel="stylesheet" href="/css/pstyle.css">
+    <link rel="stylesheet" href="/css/pindex.css">
+    <script src="/css/framework/jquery.min.js"></script>
+    <script src="/js/plog.js"></script>
+    <script src="/js/pdinate.js"></script>
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="cen1">
+        <div class="hear_de" onclick="window.history.back(-1); ">返回</div>
+        <div class="hear_log">登录</div>
+    </div>
+</header>
+<!--第二部分-->
+<div class="center1 ">
+    <div class="flor">
+        <div class="item2">
+            <div class="load-bot1">
+                <div class="box1">
+                    <input type="text" name="username" placeholder="请输入账号"  onfocus="clearMessage()">
+                </div>
+            </div>
+            <div class="load-bot1">
+                <div class="box1 box2">
+                    <input type="password" name="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="message" style="color:red"></div>
+        </div>
+        <div class="item3">
+            <div class="flor">
+                <button onclick="loginData()">登录</button>
+            </div>
+            <a href="pregister.html">快速注册</a>
+            <a href="pforget.html" style="float: right">忘记密码</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

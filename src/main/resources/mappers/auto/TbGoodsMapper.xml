@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbGoods">
+    <id column="g_id" jdbcType="BIGINT" property="gId" />
+    <result column="g_name" jdbcType="VARCHAR" property="gName" />
+    <result column="g_picture" jdbcType="VARCHAR" property="gPicture" />
+    <result column="g_price" jdbcType="DECIMAL" property="gPrice" />
+    <result column="g_freight" jdbcType="DECIMAL" property="gFreight" />
+    <result column="g_quantity" jdbcType="BIGINT" property="gQuantity" />
+    <result column="g_month_sales" jdbcType="BIGINT" property="gMonthSales" />
+    <result column="g_inventory" jdbcType="BIGINT" property="gInventory" />
+    <result column="g_details" jdbcType="VARCHAR" property="gDetails" />
+    <result column="g_create_date" jdbcType="TIMESTAMP" property="gCreateDate" />
+    <result column="g_update_date" jdbcType="TIMESTAMP" property="gUpdateDate" />
+    <result column="g_remark" jdbcType="VARCHAR" property="gRemark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    g_id, g_name, g_picture, g_price, g_freight, g_quantity, g_month_sales, g_inventory, 
+    g_details, g_create_date, g_update_date, g_remark
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbGoodsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_goods
+    where g_id = #{gId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_goods
+    where g_id = #{gId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbGoodsExample">
+    delete from tb_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbGoods">
+    insert into tb_goods (g_id, g_name, g_picture, 
+      g_price, g_freight, g_quantity, 
+      g_month_sales, g_inventory, g_details, 
+      g_create_date, g_update_date, g_remark
+      )
+    values (#{gId,jdbcType=BIGINT}, #{gName,jdbcType=VARCHAR}, #{gPicture,jdbcType=VARCHAR}, 
+      #{gPrice,jdbcType=DECIMAL}, #{gFreight,jdbcType=DECIMAL}, #{gQuantity,jdbcType=BIGINT}, 
+      #{gMonthSales,jdbcType=BIGINT}, #{gInventory,jdbcType=BIGINT}, #{gDetails,jdbcType=VARCHAR}, 
+      #{gCreateDate,jdbcType=TIMESTAMP}, #{gUpdateDate,jdbcType=TIMESTAMP}, #{gRemark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbGoods">
+    insert into tb_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gId != null">
+        g_id,
+      </if>
+      <if test="gName != null">
+        g_name,
+      </if>
+      <if test="gPicture != null">
+        g_picture,
+      </if>
+      <if test="gPrice != null">
+        g_price,
+      </if>
+      <if test="gFreight != null">
+        g_freight,
+      </if>
+      <if test="gQuantity != null">
+        g_quantity,
+      </if>
+      <if test="gMonthSales != null">
+        g_month_sales,
+      </if>
+      <if test="gInventory != null">
+        g_inventory,
+      </if>
+      <if test="gDetails != null">
+        g_details,
+      </if>
+      <if test="gCreateDate != null">
+        g_create_date,
+      </if>
+      <if test="gUpdateDate != null">
+        g_update_date,
+      </if>
+      <if test="gRemark != null">
+        g_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gId != null">
+        #{gId,jdbcType=BIGINT},
+      </if>
+      <if test="gName != null">
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gPicture != null">
+        #{gPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null">
+        #{gPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="gFreight != null">
+        #{gFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="gQuantity != null">
+        #{gQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="gMonthSales != null">
+        #{gMonthSales,jdbcType=BIGINT},
+      </if>
+      <if test="gInventory != null">
+        #{gInventory,jdbcType=BIGINT},
+      </if>
+      <if test="gDetails != null">
+        #{gDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="gCreateDate != null">
+        #{gCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gUpdateDate != null">
+        #{gUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gRemark != null">
+        #{gRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbGoodsExample" resultType="java.lang.Long">
+    select count(*) from tb_goods
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_goods
+    <set>
+      <if test="record.gId != null">
+        g_id = #{record.gId,jdbcType=BIGINT},
+      </if>
+      <if test="record.gName != null">
+        g_name = #{record.gName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gPicture != null">
+        g_picture = #{record.gPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gPrice != null">
+        g_price = #{record.gPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gFreight != null">
+        g_freight = #{record.gFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gQuantity != null">
+        g_quantity = #{record.gQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="record.gMonthSales != null">
+        g_month_sales = #{record.gMonthSales,jdbcType=BIGINT},
+      </if>
+      <if test="record.gInventory != null">
+        g_inventory = #{record.gInventory,jdbcType=BIGINT},
+      </if>
+      <if test="record.gDetails != null">
+        g_details = #{record.gDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gCreateDate != null">
+        g_create_date = #{record.gCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gUpdateDate != null">
+        g_update_date = #{record.gUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gRemark != null">
+        g_remark = #{record.gRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_goods
+    set g_id = #{record.gId,jdbcType=BIGINT},
+      g_name = #{record.gName,jdbcType=VARCHAR},
+      g_picture = #{record.gPicture,jdbcType=VARCHAR},
+      g_price = #{record.gPrice,jdbcType=DECIMAL},
+      g_freight = #{record.gFreight,jdbcType=DECIMAL},
+      g_quantity = #{record.gQuantity,jdbcType=BIGINT},
+      g_month_sales = #{record.gMonthSales,jdbcType=BIGINT},
+      g_inventory = #{record.gInventory,jdbcType=BIGINT},
+      g_details = #{record.gDetails,jdbcType=VARCHAR},
+      g_create_date = #{record.gCreateDate,jdbcType=TIMESTAMP},
+      g_update_date = #{record.gUpdateDate,jdbcType=TIMESTAMP},
+      g_remark = #{record.gRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbGoods">
+    update tb_goods
+    <set>
+      <if test="gName != null">
+        g_name = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gPicture != null">
+        g_picture = #{gPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="gPrice != null">
+        g_price = #{gPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="gFreight != null">
+        g_freight = #{gFreight,jdbcType=DECIMAL},
+      </if>
+      <if test="gQuantity != null">
+        g_quantity = #{gQuantity,jdbcType=BIGINT},
+      </if>
+      <if test="gMonthSales != null">
+        g_month_sales = #{gMonthSales,jdbcType=BIGINT},
+      </if>
+      <if test="gInventory != null">
+        g_inventory = #{gInventory,jdbcType=BIGINT},
+      </if>
+      <if test="gDetails != null">
+        g_details = #{gDetails,jdbcType=VARCHAR},
+      </if>
+      <if test="gCreateDate != null">
+        g_create_date = #{gCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gUpdateDate != null">
+        g_update_date = #{gUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gRemark != null">
+        g_remark = #{gRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where g_id = #{gId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbGoods">
+    update tb_goods
+    set g_name = #{gName,jdbcType=VARCHAR},
+      g_picture = #{gPicture,jdbcType=VARCHAR},
+      g_price = #{gPrice,jdbcType=DECIMAL},
+      g_freight = #{gFreight,jdbcType=DECIMAL},
+      g_quantity = #{gQuantity,jdbcType=BIGINT},
+      g_month_sales = #{gMonthSales,jdbcType=BIGINT},
+      g_inventory = #{gInventory,jdbcType=BIGINT},
+      g_details = #{gDetails,jdbcType=VARCHAR},
+      g_create_date = #{gCreateDate,jdbcType=TIMESTAMP},
+      g_update_date = #{gUpdateDate,jdbcType=TIMESTAMP},
+      g_remark = #{gRemark,jdbcType=VARCHAR}
+    where g_id = #{gId,jdbcType=BIGINT}
+  </update>
+</mapper>

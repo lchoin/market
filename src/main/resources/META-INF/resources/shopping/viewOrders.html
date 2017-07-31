@@ -1,0 +1,115 @@
+<script>
+    viewOrderStatus();
+</script>
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        管理员修改订单状态
+    </ul><!-- .breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12 center">
+            <!-- PAGE CONTENT BEGINS -->
+
+            <div id="orders">
+                <table class="none" style="margin:10px">
+                    <thead>
+                    <tr>
+                        <th class="tises">
+                            <div class="creatData"></div>
+                            <div>
+                                订单号: <span class="piId"></span>
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="lisr">
+                    <tr>
+                        <td>
+                            <div style="float: left;width:100px;height:100px">
+                                <img class="ims" src="" alt="">
+                            </div>
+                           <div>
+                               <div class="gName">
+
+                               </div>
+                               <div class="gPrice" style="font-weight: bold">
+                                   ￥<span></span>
+                               </div>
+                               <div class="count">
+                                   共 :<span></span>件
+                               </div>
+                               <div class="status">
+                                   订单状态：
+                                   <span></span>
+                               </div>
+                               <div class="nam">
+                                   收件人：
+                                   <span></span>
+                               </div>
+                               <div class="daPhone">
+                                   手机号码：
+                                   <span></span>
+                               </div>
+                               <div class="adr">
+                                   收货地址 :
+                                   <span></span>
+                               </div>
+                               <div class="languange">
+                                   评论:
+                                   <span></span>
+                               </div>
+                           </div>
+                            <div class="btns" style="float: right">
+                                <!--<button style="" class="btn btn-info">发货</button>-->
+                            </div>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+            <div style="width:100%;height:10px"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<!--修改-->
+<script>
+    loadlog();
+</script>
+<div class="modal fade" id="logisticsData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加物流信息</h4>
+            </div>
+            <div class="modal-body">
+                <table class="modifyGoo">
+                    <tr style="display: none">
+                        <td class="title">商品ID</td>
+                        <td class="piId" ></td>
+                    </tr>
+                    <tr>
+                        <td class="title">快递单号</td>
+                        <td><input type="text" name="tracking"></td>
+                    </tr>
+                    <tr>
+                        <td class="title">公司编号</td>
+                        <td><select name="code" id=""></select></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default modGood" onclick="addLog()">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>太空商城</title>
+    <script src="/css/framework/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/framework/bootstrap-3.3.0-dist/css/bootstrap.min.css">
+    <script src="/css/framework/bootstrap-3.3.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/pindex.css">
+    <link rel="stylesheet" href="/css/pstyle.css">
+    <script src="/js/pdinate.js"></script>
+    <link rel="stylesheet" href="/js/need/layer.css">
+    <script src="/js/layer.js"></script>
+    <script>
+        checkMyLine()
+    </script>
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="cen1">
+        <div class="hear_de" onclick="returnload(3)">返回</div>
+        <div class="hear_log">我的下线</div>
+    </div>
+</header>
+<!--第二部分-->
+<div class="center1">
+    <div class="wrap_ejmm1" style="padding: 10px">
+        <div class="bors" style="text-align: center">
+                <h4>
+                    <button style="padding:6px" class="btn btn-prev" onclick="lastType()">
+                        上一级
+                    </button>
+                    我的<span class="numberType">1</span>级下线
+                    <button style="padding:6px" class="btn btn-success btn-next" data-last="Finish" onclick="nextType()">
+                        下一级</button>
+                </h4>
+            </div>
+        <div class="contents" style="margin-top: 20px">
+            <table class="member none">
+                <tbody>
+                <tr>
+                    <td class="title">用户名:</td>
+                    <td class="uName"></td>
+                </tr>
+                <tr>
+                    <td class="title">手机号:</td>
+                    <td class="uPhone"></td>
+                </tr>
+                <tr>
+                    <td class="title">用户类型:</td>
+                    <td class="uType"></td>
+                </tr>
+                <tr>
+                    <td class="title">创建时间:</td>
+                    <td class="uCreateDate"></td>
+                </tr>
+                <tr>
+                    <td class="title">推荐人:</td>
+                    <td class="uReisterRecommender"></td>
+                </tr>
+                <tr>
+                    <td class="title">总金额:</td>
+                    <td class="uSumMoney"></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+<a id="gotop" title="回到顶部" href="#top" style="z-index: 999"></a>
+
+</body>
+</html>

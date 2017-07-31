@@ -1,0 +1,35 @@
+<script>
+    userViewGoods();
+</script>
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        购买商品
+    </ul><!-- .breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12 center">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="showShopping">
+                <ul class="goodsList">
+                   <!-- <li>
+                        <div class="sImg">
+                            <img src="images/s1.jpg" alt="">
+                        </div>
+                        <div class="sPrice">￥<span></span></div>
+                        <div class="sTitle"><a href="#">
+                            当天发送豪礼 Huawei/华为 P8 标准版高配移动联通电信版双4G手机
+                        </a></div>
+                    </li>-->
+
+                </ul>
+            </div>
+
+
+
+            <div style="width:100%;height:10px"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->

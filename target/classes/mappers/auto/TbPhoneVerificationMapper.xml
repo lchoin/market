@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbPhoneVerificationMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbPhoneVerification">
+    <id column="pv_id" jdbcType="BIGINT" property="pvId" />
+    <result column="pv_phone" jdbcType="CHAR" property="pvPhone" />
+    <result column="pv_verification_code" jdbcType="CHAR" property="pvVerificationCode" />
+    <result column="pv_create_date" jdbcType="TIMESTAMP" property="pvCreateDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pv_id, pv_phone, pv_verification_code, pv_create_date
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbPhoneVerificationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_phone_verification
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_phone_verification
+    where pv_id = #{pvId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_phone_verification
+    where pv_id = #{pvId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbPhoneVerificationExample">
+    delete from tb_phone_verification
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbPhoneVerification">
+    insert into tb_phone_verification (pv_id, pv_phone, pv_verification_code, 
+      pv_create_date)
+    values (#{pvId,jdbcType=BIGINT}, #{pvPhone,jdbcType=CHAR}, #{pvVerificationCode,jdbcType=CHAR}, 
+      #{pvCreateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbPhoneVerification">
+    insert into tb_phone_verification
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pvId != null">
+        pv_id,
+      </if>
+      <if test="pvPhone != null">
+        pv_phone,
+      </if>
+      <if test="pvVerificationCode != null">
+        pv_verification_code,
+      </if>
+      <if test="pvCreateDate != null">
+        pv_create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pvId != null">
+        #{pvId,jdbcType=BIGINT},
+      </if>
+      <if test="pvPhone != null">
+        #{pvPhone,jdbcType=CHAR},
+      </if>
+      <if test="pvVerificationCode != null">
+        #{pvVerificationCode,jdbcType=CHAR},
+      </if>
+      <if test="pvCreateDate != null">
+        #{pvCreateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbPhoneVerificationExample" resultType="java.lang.Long">
+    select count(*) from tb_phone_verification
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_phone_verification
+    <set>
+      <if test="record.pvId != null">
+        pv_id = #{record.pvId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pvPhone != null">
+        pv_phone = #{record.pvPhone,jdbcType=CHAR},
+      </if>
+      <if test="record.pvVerificationCode != null">
+        pv_verification_code = #{record.pvVerificationCode,jdbcType=CHAR},
+      </if>
+      <if test="record.pvCreateDate != null">
+        pv_create_date = #{record.pvCreateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_phone_verification
+    set pv_id = #{record.pvId,jdbcType=BIGINT},
+      pv_phone = #{record.pvPhone,jdbcType=CHAR},
+      pv_verification_code = #{record.pvVerificationCode,jdbcType=CHAR},
+      pv_create_date = #{record.pvCreateDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbPhoneVerification">
+    update tb_phone_verification
+    <set>
+      <if test="pvPhone != null">
+        pv_phone = #{pvPhone,jdbcType=CHAR},
+      </if>
+      <if test="pvVerificationCode != null">
+        pv_verification_code = #{pvVerificationCode,jdbcType=CHAR},
+      </if>
+      <if test="pvCreateDate != null">
+        pv_create_date = #{pvCreateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pv_id = #{pvId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbPhoneVerification">
+    update tb_phone_verification
+    set pv_phone = #{pvPhone,jdbcType=CHAR},
+      pv_verification_code = #{pvVerificationCode,jdbcType=CHAR},
+      pv_create_date = #{pvCreateDate,jdbcType=TIMESTAMP}
+    where pv_id = #{pvId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>太空商城</title>
+    <script src="/css/framework/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/framework/bootstrap-3.3.0-dist/css/bootstrap.min.css">
+    <script src="/css/framework/bootstrap-3.3.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/pindex.css">
+    <link rel="stylesheet" href="/css/pstyle.css">
+    <script src="/js/pdinate.js"></script>
+    <link rel="stylesheet" href="/js/need/layer.css">
+    <script src="/js/layer.js"></script>
+    <script>
+        loadbuy();
+    </script>
+</head>
+<body>
+<!--头部-->
+<header>
+    <div class="cen1">
+        <div class="hear_de" onclick="window.history.back(-1); ">返回</div>
+        <div class="hear_log">确认订单</div>
+    </div>
+</header>
+<!--第二部分-->
+<div class="center1">
+    <div class="tab-content" style="padding: 10px">
+        <div id="goods" class="tab-pane active">
+            <div class="detailData">
+                <div class="gName" style="letter-spacing: 1px;padding:5px 0;border-bottom: 1px solid #ccc">
+                </div>
+                <div class="gQuanlity">
+                    数量：<input type="number" value="1" id="shopNumber" style="width: 50px">件
+                </div>
+                <div class="gFrie">
+                    运费: <span></span>元
+                </div>
+                <div>
+                    <h4 class="modal-title">请选择收货地址:</h4>
+                </div>
+                <div id="shopBuyModalBody">
+                    <input type="text" id="addressId" style="visibility: hidden;height:1px;border:none">
+                </div>
+                <style>
+                    #shopBuyModalBody>div{cursor: pointer}
+                    #shopBuyModalBody div.active4{border:1px solid red;padding:10px;box-shadow: 2px 2px 2px #ccc}
+                </style>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div style="height:51px"></div>
+<div class="fos" >
+
+    <!--<div class="gPriceDta buy1">
+        <span>￥<span class="gPrice"></span></span>
+    </div>-->
+    <div class="buy2" onclick="buy()">提交订单</div>
+</div>
+</body>
+</html>

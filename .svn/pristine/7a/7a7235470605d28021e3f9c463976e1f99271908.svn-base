@@ -1,0 +1,61 @@
+
+
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        用户认证
+    </ul><!-- .breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12 center">
+            <!-- PAGE CONTENT BEGINS -->
+
+            <div class="top-insert">
+                <table class="sel-tab userAuthen left">
+                    <tbody>
+                    <tr>
+                        <td class="title">真实姓名</td>
+                        <td><input type="text" name="aRealName"></td>
+                        <td rowspan="3" class="td_normal left" style="width:20%; line-height: 100%;text-align: center">
+                            <div style="margin:5px">
+                                身份证照片
+                            </div>
+                            <div class="hmsc_img01" >
+                                <img id="headl" src="images/scgrtx_s1.jpg">
+                            </div>
+                            <div class="btn btn-info total">
+                                <span>上传照片</span>
+                                <input type="text" id="picture1" name="aIdentityCardPicture"  value="" style="visibility: hidden;width:10px">
+                                <form  enctype='multipart/form-data' method='post' action='javascript:;'  id="frmUpload1" style="display: inline-block;position: absolute;top:0;left:0">
+                                    <input type = "file" name = "pictureFile"  onchange = "uploadFile('#frmUpload1','#headl','#picture1')" class="file-input" size="1"  style="opacity:0;z-index: 11;position: absolute;top:0"/>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">身份证号码</td>
+                        <td><input type="text" name="aIdentityCard"></td>
+                    </tr>
+                    <tr>
+                        <td class="title">备注</td>
+                        <td>
+                            <textarea name="aRemark" style="width: 97%"></textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="plateBtn center">
+                    <button class="btn btn-info authen" type="submit" onclick="userAuth()" style="margin-top: 20px">
+                        <i class="icon-ok bigger-110"></i>
+                        提交
+                    </button>
+                </div>
+            </div>
+
+
+            <div style="width:100%;height:10px"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->

@@ -1,0 +1,90 @@
+<script>
+    showMessage1();
+</script>
+<div class="contain">
+    <!--头部-->
+    <header style="background-color: #000">
+        <div class="cen">
+            <!--<div class="hear_de">返回</div>-->
+            <div class="hear_log">个人中心</div>
+        </div>
+    </header>
+    <!--第二部分-->
+    <div class="center1">
+        <div style="height:202px" class="lis">
+            <div class="tops none">
+                <div style="margin-right: -25px;position:relative">
+                    <div class="igl">
+                        <img id="uhead1" style="width:100%;height:100%" src="">
+                    </div>
+                    <div class="igr1">
+                        <input type="text" id="picture1" name="uHeadPortrait"  value="" style="visibility: hidden;width:10px;position: absolute">
+                        <form  enctype='multipart/form-data' method='post' action='javascript:;'  id="frmUpload1" >
+                            <input type = "file" name = "pictureFile"  onchange="modifyHead()" class="file-input" size="1" style="position: absolute;width: 100%;height: 100%;opacity: 0"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="view3" onclick="logout()">退出</div>
+            </div>
+            <div class="ends none">
+                <div class="end-cen">
+                    <div>
+                        <span>你好,</span>
+                        <span class="userName"></span>
+                    </div>
+                    <div>
+                        <span class="uAuthentication"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--第三部分-->
+    <div class="roll">
+        <div class="roll-header">
+            <div class="rolls-one">
+                <div class="plateBtn" url="voucherCenter.html">
+                    充值
+                </div>
+            </div>
+        </div>
+        <div class="roll-center">
+            <ul class="recharge">
+                <li url="perData.html">
+                    <span  class="r-03">个人资料</span>
+                    <div class="jt"></div>
+                </li>
+                <li url="mPassword.html">
+                    <span class="r-02">修改密码</span>
+                    <div class="jt"></div>
+                </li>
+                <li url="myReferrals.html">
+                    <span  class="r-04">我的下线</span>
+                    <div class="jt"></div>
+                </li>
+                <li url="personalConsumption.html">
+                    <span class="r-05">个人消费</span>
+                    <div class="jt"></div>
+                </li>
+                <li class="thud" url="Authentication.html">
+                    <span class="r-06">用户认证</span>
+                    <div class="jt"></div>
+                </li>
+            </ul>
+            <script>
+                $(function(){
+                    $(".recharge li").on("click",function(){
+                        loadPages(this);
+                    });
+                    $(".plateBtn").on("click",function(){
+                        loadPages(this);
+                    })
+                });
+            </script>
+        </div>
+
+
+    </div>
+    <!--第三部分结束-->
+
+</div>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzf.market.dao.TbEarningsMapper">
+  <resultMap id="BaseResultMap" type="com.jzf.market.pojo.auto.TbEarnings">
+    <id column="e_id" jdbcType="BIGINT" property="eId" />
+    <result column="e_type" jdbcType="CHAR" property="eType" />
+    <result column="e_value" jdbcType="INTEGER" property="eValue" />
+    <result column="e_create_date" jdbcType="TIMESTAMP" property="eCreateDate" />
+    <result column="e_remark" jdbcType="VARCHAR" property="eRemark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    e_id, e_type, e_value, e_create_date, e_remark
+  </sql>
+  <select id="selectByExample" parameterType="com.jzf.market.pojo.auto.TbEarningsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_earnings
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_earnings
+    where e_id = #{eId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_earnings
+    where e_id = #{eId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jzf.market.pojo.auto.TbEarningsExample">
+    delete from tb_earnings
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jzf.market.pojo.auto.TbEarnings">
+    insert into tb_earnings (e_id, e_type, e_value, 
+      e_create_date, e_remark)
+    values (#{eId,jdbcType=BIGINT}, #{eType,jdbcType=CHAR}, #{eValue,jdbcType=INTEGER}, 
+      #{eCreateDate,jdbcType=TIMESTAMP}, #{eRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jzf.market.pojo.auto.TbEarnings">
+    insert into tb_earnings
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eId != null">
+        e_id,
+      </if>
+      <if test="eType != null">
+        e_type,
+      </if>
+      <if test="eValue != null">
+        e_value,
+      </if>
+      <if test="eCreateDate != null">
+        e_create_date,
+      </if>
+      <if test="eRemark != null">
+        e_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eId != null">
+        #{eId,jdbcType=BIGINT},
+      </if>
+      <if test="eType != null">
+        #{eType,jdbcType=CHAR},
+      </if>
+      <if test="eValue != null">
+        #{eValue,jdbcType=INTEGER},
+      </if>
+      <if test="eCreateDate != null">
+        #{eCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eRemark != null">
+        #{eRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jzf.market.pojo.auto.TbEarningsExample" resultType="java.lang.Long">
+    select count(*) from tb_earnings
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_earnings
+    <set>
+      <if test="record.eId != null">
+        e_id = #{record.eId,jdbcType=BIGINT},
+      </if>
+      <if test="record.eType != null">
+        e_type = #{record.eType,jdbcType=CHAR},
+      </if>
+      <if test="record.eValue != null">
+        e_value = #{record.eValue,jdbcType=INTEGER},
+      </if>
+      <if test="record.eCreateDate != null">
+        e_create_date = #{record.eCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.eRemark != null">
+        e_remark = #{record.eRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_earnings
+    set e_id = #{record.eId,jdbcType=BIGINT},
+      e_type = #{record.eType,jdbcType=CHAR},
+      e_value = #{record.eValue,jdbcType=INTEGER},
+      e_create_date = #{record.eCreateDate,jdbcType=TIMESTAMP},
+      e_remark = #{record.eRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jzf.market.pojo.auto.TbEarnings">
+    update tb_earnings
+    <set>
+      <if test="eType != null">
+        e_type = #{eType,jdbcType=CHAR},
+      </if>
+      <if test="eValue != null">
+        e_value = #{eValue,jdbcType=INTEGER},
+      </if>
+      <if test="eCreateDate != null">
+        e_create_date = #{eCreateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eRemark != null">
+        e_remark = #{eRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where e_id = #{eId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jzf.market.pojo.auto.TbEarnings">
+    update tb_earnings
+    set e_type = #{eType,jdbcType=CHAR},
+      e_value = #{eValue,jdbcType=INTEGER},
+      e_create_date = #{eCreateDate,jdbcType=TIMESTAMP},
+      e_remark = #{eRemark,jdbcType=VARCHAR}
+    where e_id = #{eId,jdbcType=BIGINT}
+  </update>
+</mapper>

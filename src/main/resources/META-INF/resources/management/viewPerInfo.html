@@ -1,0 +1,106 @@
+<script>
+    loadPerInfo();
+$(function(){
+    $(".modifyInfo").off("click");
+    $(".modifyInfo").on("click",function(){
+        modifyPerInfo();
+    });
+    $("input[type='radio']").on("change",function(){
+        console.log($(":radio[name='uSex']:checked").val())
+    })
+})
+</script>
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        基本信息
+    </ul><!-- .breadcrumb -->
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12 center">
+            <!-- PAGE CONTENT BEGINS -->
+
+            <table class="mytable">
+                <tbody>
+                <tr>
+                    <td class="title">用户名</td>
+                    <td>
+                        <input type="text" name="uName">
+                    </td>
+                    <td class="title">账号</td>
+                    <td class="uAccount"></td>
+                    <td rowspan="7" class="td_normal left" style="width:20%; line-height: 100%;text-align: center">
+                        <div style="margin:5px">
+                            个人头像
+                        </div>
+                        <div class="hmsc_img01" >
+                            <img id="headPortrait" src="images/scgrtx_s1.jpg">
+                        </div>
+                        <div class="btn btn-info total">
+                            <span>上传头像</span>
+                            <input type="text" id="pictureFile" name="uHeadPortrait"  value="" style="visibility: hidden;width:10px">
+                            <form  enctype='multipart/form-data' method='post' action='javascript:;'  id="frmUploadFile" style="display: inline-block;position: absolute;top:0;left:0">
+                                    <input type = "file" name = "pictureFile"  onchange = "uploadFile('#frmUploadFile','#headPortrait','#pictureFile')" class="file-input" size="1"  style="opacity:0;z-index: 11;position: absolute;top:0"/>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">手机号</td>
+                    <td><input type="tel" name="uPhone"></td>
+                    <td class="title">性别</td>
+                    <td>
+                        <input class="man" type="radio" name="uSex" value="1">男
+                        <input class="feman" type="radio" name="uSex" value="0">女
+                    </td>
+                </tr>
+                <tr>
+                    <td class="title">所在省市</td>
+                    <td colspan="3"><input type="text" name="uProvince"></td>
+                </tr>
+                <tr>
+                    <td class="title">所在城市</td>
+                    <td colspan="3"><input type="text" name="uCity"></td>
+                </tr>
+                <tr>
+                    <td class="title">地址</td>
+                    <td><input type="text" name="uAddress"></td>
+                    <td class="title">创建时间</td>
+                    <td class="uCreateDate"></td>
+                </tr>
+                <tr>
+                    <td class="title">认证状态</td>
+                    <td colspan="3" class="uAuthentication"></td>
+                </tr>
+                <tr>
+                    <td class="title">认证时间</td>
+                    <td colspan="3" class="uAuthDate"></td>
+                </tr>
+                <tr>
+                    <td class="title">推荐人</td>
+                    <td colspan="4" class="uReisterRecommender"></td>
+                </tr>
+                <tr>
+                    <td class="title">推荐人账号</td>
+                    <td colspan="4" class="uReisterRecommenderAccount"></td>
+                </tr>
+                <tr>
+                    <td class="title">备注</td>
+                    <td colspan="4" >
+                        <textarea name="uRemark" style="width:97%"></textarea>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;margin:20px">
+                <button class="btn btn-info modifyInfo" type="button">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+            </div>
+
+            <div style="width:100%;height:10px"></div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
